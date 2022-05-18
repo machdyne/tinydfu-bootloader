@@ -1,0 +1,18 @@
+set_io pin_led   H9
+set_io pin_clk   L5
+
+set_io pin_usb_p J8
+set_io pin_usb_n K7
+set_io pin_pu    J7
+
+set_io -nowarn pin_16_cs K10
+set_io -nowarn pin_15_sck L10
+set_io -nowarn pin_14_mosi K9
+set_io -nowarn pin_17_miso J9
+
+## Debug pins
+set_io --warn-no-port debug[0] J5
+set_io --warn-no-port debug[1] L1
+set_io --warn-no-port debug[2] J3
+set_io --warn-no-port debug[3] G3
+set_io --warn-no-port boot H7
