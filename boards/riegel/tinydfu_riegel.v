@@ -1,6 +1,8 @@
 /*
  *  TinyDFU Bootloader for the Lone Dynamics Riegel.
+ *  (based on the TinyFPGA BX bootloader)
  */
+
 module tinydfu_riegel (
         input  pin_clk,
 
