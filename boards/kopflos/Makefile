@@ -29,7 +29,7 @@ SRC = $(PROJTOP).v $(SOURCES)
 
 PIN_DEF = kopflos_v0.lpf
 
-DEVICE = --45k
+DEVICE = --12k
 PACKAGE = CABGA256
 BOOTADDR = 0x100000 # User image starts at 1MB
 
