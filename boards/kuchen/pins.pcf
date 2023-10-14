@@ -1,0 +1,11 @@
+set_io pin_led   C13
+set_io pin_clk   F7
+
+set_io pin_usb_p T2
+set_io pin_usb_n T1
+set_io pin_pu    T3
+
+set_io -nowarn pin_16_cs R12
+set_io -nowarn pin_15_sck R11
+set_io -nowarn pin_14_mosi P12
+set_io -nowarn pin_17_miso P11
