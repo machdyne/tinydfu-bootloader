@@ -31,7 +31,12 @@ PIN_DEF = obst_v0.lpf
 
 DEVICE = --12k
 PACKAGE = CABGA256
-BOOTADDR = 0x100000 # User image starts at 1MB
+# KEEP IN SYNC WITH USERPART_START IN boardinfo.vh. ecppack bakes this
+# into the bitstream as the ECP5 multiboot jump target; boardinfo.vh
+# tells dfu-util where to write. They are the same number, and a
+# mismatch produces a board that accepts a write and then does not
+# boot, with nothing to say why.
+BOOTADDR = 0x040000 # User image starts at 256KB
 
 all: $(PROJTOP).bit $(PROJTOP).hex $(PROJTOP).svf
 bootloader: $(PROJTOP).bit

@@ -126,7 +126,9 @@ module usb_dfu_stub (
   // DFU state and debug
   output dfu_detach,
   output [7:0] dfu_state,
+`ifdef DEBUG
   output [11:0] debug
+`endif
 );
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -194,7 +196,9 @@ module usb_dfu_stub (
     // DFU state and debug
     .dfu_detach(dfu_detach),
     .dfu_state(dfu_state),
+`ifdef DEBUG
     .debug(debug[3:0])
+`endif
   );
 
   wire nak_in_ep_grant;
@@ -242,8 +246,10 @@ module usb_dfu_stub (
     .frame_index(frame_index),
     .rst_detect(usb_reset),
 
+`ifdef DEBUG
     // Debug
     .debug(debug[11:4])
+`endif
   );
 
 endmodule

@@ -38,7 +38,9 @@ module usb_dfu_stub_ep #(
   ///////////////////////////
   output reg dfu_detach = 0,
   output [7:0] dfu_state,
+`ifdef DEBUG
   output [7:0] debug
+`endif
 );
 
   // Get board information

@@ -53,7 +53,9 @@ module usb_fs_in_pe #(
   input tx_data_get,
   output reg [7:0] tx_data,
 
+`ifdef DEBUG
   output [7:0] debug
+`endif
 );
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -72,7 +74,9 @@ module usb_fs_in_pe #(
   localparam GETTING_PKT = 2;
   localparam STALL = 3;
 
+`ifdef DEBUG
   assign debug[1:0] = ( current_endp == 1 ) ? current_ep_state : 0;
+`endif
 
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -86,13 +90,17 @@ module usb_fs_in_pe #(
   reg [1:0] in_xfr_state = IDLE;
   reg [1:0] in_xfr_state_next;
 
+`ifdef DEBUG
   assign debug[3:2] = ( current_endp == 1 ) ? in_xfr_state : 0;
+`endif
 
   reg in_xfr_start = 0;
   reg in_xfr_end = 0;
 
+`ifdef DEBUG
   assign debug[4] = tx_data_avail; 
   assign debug[5] = tx_data_get; 
+`endif
 
   // data toggle state
   reg [NUM_IN_EPS - 1:0] data_toggle = 0;
@@ -144,9 +152,10 @@ module usb_fs_in_pe #(
     rx_pkt_valid &&
     rx_pid == 4'b0010;
 
+`ifdef DEBUG
   assign debug[ 6 ] = rx_pkt_start;
   assign debug[ 7 ] = rx_pkt_end;
-  
+`endif
 
   wire more_data_to_send =
     ep_get_addr[current_endp][5:0] < ep_put_addr[current_endp][5:0];

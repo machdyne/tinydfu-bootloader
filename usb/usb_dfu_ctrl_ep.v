@@ -103,9 +103,28 @@ module usb_dfu_ctrl_ep #(
   localparam STR_INDEX_SERIAL = 3;
   localparam STR_INDEX_PARTITIONS = 4;
 
-  localparam USERPART_NAME = "User Image";
-  localparam DATAPART_NAME = "User Data";
-  localparam BOOTPART_NAME = "Bootloader";
+  // Partition names, as shown by `dfu-util -l`.
+  //
+  // A board's boardinfo.vh -- included above -- may `define any of
+  // these to override the default. Lakritz and Obst carry their
+  // partition sizes in the name, so listing the device says which
+  // flash layout it has; a board that defines none gets exactly the
+  // names it got before.
+  //
+  // `define rather than localparam, because `ifndef tests the
+  // preprocessor and cannot see a localparam. Declaring these as
+  // localparams here while a board also declares them in boardinfo.vh
+  // is a redeclaration in the same scope and will not compile, which
+  // is what these guards exist to avoid.
+`ifndef USERPART_NAME
+  `define USERPART_NAME "User Image"
+`endif
+`ifndef DATAPART_NAME
+  `define DATAPART_NAME "User Data"
+`endif
+`ifndef BOOTPART_NAME
+  `define BOOTPART_NAME "Bootloader"
+`endif
 
   reg [5:0] ctrl_xfr_state = IDLE;
   reg [5:0] ctrl_xfr_state_next;
@@ -744,9 +763,9 @@ usb_string_rom#(
     BOARD_MFR_NAME, 8'h00,
     BOARD_PRODUCT_NAME, 8'h00,
     BOARD_SERIAL, 8'h00,
-    USERPART_NAME, 8'h00,
-    DATAPART_NAME, 8'h00,
-    BOOTPART_NAME, 8'h00,
+    `USERPART_NAME, 8'h00,
+    `DATAPART_NAME, 8'h00,
+    `BOOTPART_NAME, 8'h00,
     {(SPI_SECURITY_REGISTERS){"Security Reg", 8'h00}}
   })
 ) str_rom(

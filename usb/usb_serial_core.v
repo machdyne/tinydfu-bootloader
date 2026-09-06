@@ -146,7 +146,9 @@ module usb_serial_core (
   // DFU state and debug
   output dfu_detach,
   output [7:0] dfu_state,
+`ifdef DEBUG
   output [11:0] debug
+`endif
 );
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -311,8 +313,10 @@ module usb_serial_core (
     .frame_index(frame_index),
     .rst_detect(usb_reset),
 
+`ifdef DEBUG
     // Debug
     .debug(debug[11:4])
+`endif
   );
 
 endmodule

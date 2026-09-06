@@ -66,7 +66,9 @@ module usb_fs_pe #(
 
   output usb_tx_en,
 
+`ifdef DEBUG
   output [7:0] debug
+`endif
 );
   // in pe interface
   wire [7:0] arb_in_ep_data;
@@ -155,7 +157,9 @@ module usb_fs_pe #(
     .tx_data_get(tx_data_get),
     .tx_data(tx_data),
 
+`ifdef DEBUG
     .debug(debug)
+`endif
   );
 
   usb_fs_out_pe #(
