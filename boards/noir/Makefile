@@ -1,10 +1,10 @@
 ##
-## Make and program Schoko
+## Make and program Noir
 ##
 
 BASENAME = tinydfu
-TARGETNAME = $(BASENAME)_schoko
-PROJTOP = tinydfu_schoko
+TARGETNAME = $(BASENAME)_noir
+PROJTOP = tinydfu_noir
 
 RTL_USB_DIR = ../../usb
 
@@ -27,7 +27,7 @@ SOURCES = \
 
 SRC = $(PROJTOP).v $(SOURCES)
 
-PIN_DEF = schoko_v1.lpf
+PIN_DEF = noir_v0.lpf
 
 DEVICE = --45k
 PACKAGE = CABGA256
@@ -59,10 +59,10 @@ $(PROJTOP).json: $(SRC)
 	hexdump $^ > $@
 
 prog: $(PROJTOP).svf
-	openFPGALoader -c usb-blaster tinydfu_schoko.bit	
+	openFPGALoader -c usb-blaster tinydfu_noir.bit	
 
 prog_flash: $(PROJTOP).svf
-	openFPGALoader -c usb-blaster -f tinydfu_schoko.bit	
+	openFPGALoader -c usb-blaster -f tinydfu_noir.bit	
 
 dfu: $(PROJTOP).bit
 	dfu-util -d 16d0:116d -a2 -D $<

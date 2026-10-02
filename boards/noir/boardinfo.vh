@@ -1,4 +1,4 @@
-/* DFU Board information definitions for the Lone Dynamics Klinge */
+/* DFU Board information definitions for the Lone Dynamics Noir */
 localparam SPI_FLASH_SIZE = (2 * 1024 * 1024);
 localparam SPI_ERASE_SIZE = 4096;
 localparam SPI_PAGE_SIZE  = 256;
@@ -66,9 +66,9 @@ localparam SPI_SECURITY_REG_SHIFT = 12;
 
 /* USB VID/PID Definitions */
 localparam BOARD_VID = 'h16d0;  /* MCS */
-localparam BOARD_PID = 'h116d;  /* Klinge DFU Bootloader */
+localparam BOARD_PID = 'h116d;  /* Noir DFU Bootloader */
 
 /* String Descriptors */
 localparam BOARD_MFR_NAME = "Lone Dynamics Corporation";
-localparam BOARD_PRODUCT_NAME = "Klinge DFU Bootloader";
+localparam BOARD_PRODUCT_NAME = "Noir DFU Bootloader";
 localparam BOARD_SERIAL = "000000";

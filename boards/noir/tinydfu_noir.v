@@ -1,9 +1,9 @@
 /*
- *  TinyDFU Bootloader for the Lone Dynamics Schoko computer.
+ *  TinyDFU Bootloader for the Lone Dynamics Noir computer.
  *  (based on the Logicbone ECP5 bootloader)
  */
 
-module tinydfu_schoko (
+module tinydfu_noir (
     input        refclk,
     output       resetn,
 
